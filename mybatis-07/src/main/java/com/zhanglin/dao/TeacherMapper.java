@@ -10,4 +10,6 @@ public interface TeacherMapper {
 
     //获取指定老师下的所有学生及老师的信息；
     public Teacher getDesignatedTeacher(@Param("tid") int id);
+
+    public Teacher getDesignatedTeacher2(@Param("tid") int id);
 }

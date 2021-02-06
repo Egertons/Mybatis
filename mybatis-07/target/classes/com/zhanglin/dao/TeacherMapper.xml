@@ -19,4 +19,15 @@
             <result property="tid" column="tid"/>
         </collection>
     </resultMap>
+
+
+    <select id="getDesignatedTeacher2" resultMap="demo2">
+        select * from teacher where id = #{tid};
+    </select>
+    <resultMap id="demo2" type="Teacher">
+        <collection property="students" column="id" javaType="ArrayList" ofType="Student" select="a"/>
+    </resultMap>
+    <select id="a" resultType="Student">
+        select * from student where tid = #{id};
+    </select>
 </mapper>

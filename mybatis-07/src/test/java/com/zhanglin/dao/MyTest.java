@@ -28,4 +28,13 @@ public class MyTest {
         System.out.println(designatedTeacher.toString());
         sqlSession.close();
     }
+
+    @Test
+    public void getDesignatedTeacher2(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
+        Teacher designatedTeacher2 = mapper.getDesignatedTeacher2(1);
+        System.out.println(designatedTeacher2.toString());
+        sqlSession.close();
+    }
 }
