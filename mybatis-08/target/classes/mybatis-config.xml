@@ -8,6 +8,9 @@
         <property name="username" value="root"/>
         <property name="password" value="zhanglin1111"/>
     </properties>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
     <typeAliases>
         <package name="com.zhanglin.pojo"/>
     </typeAliases>

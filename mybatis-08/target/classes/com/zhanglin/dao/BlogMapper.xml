@@ -9,4 +9,33 @@
     <resultMap id="a" type="Blog">
         <result property="createTime" column="create_time"/>
     </resultMap>
+
+    <insert id="add" parameterType="blog">
+        insert into blog (id,title,author,create_time,views)
+        values (#{id},#{title},#{author},#{createTime},#{views});
+    </insert>
+
+    <select id="quaryBlogByIf" parameterType="map" resultType="blog">
+        select * from blog where 1=1
+        <if test="title!=null">
+            and title = #{title}
+        </if>
+        <if test="author!=null">
+            and author = #{author}
+        </if>
+    </select>
+
+    <select id="quaryBlogPowerByChoose" resultType="blog" parameterType="map">
+        select * from blog
+        <where>
+            <choose>
+                <when test="demo == 1">
+                    and title = 'text'
+                </when>
+                <when test="demo == 2">
+                    and author = 'zhanglin'
+                </when>
+            </choose>
+        </where>
+    </select>
 </mapper>
