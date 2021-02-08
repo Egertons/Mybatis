@@ -14,4 +14,10 @@ public interface BlogMapper {
    public List<Blog> quaryBlogByIf(Map map);
 
    public List<Blog> quaryBlogPowerByChoose(Map map);
+
+   //更新博客
+    public int updateBlog(Map map);
+
+    //xml-foreach尝试
+    public List<Blog> selectBlogByforeach(Map map);
 }

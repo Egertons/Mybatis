@@ -38,4 +38,28 @@
             </choose>
         </where>
     </select>
+
+    <update id="updateBlog" parameterType="map">
+        update blog
+        <set>
+            <include refid="text"/>
+        </set>
+        where id=#{id};
+    </update>
+    
+    <sql id="text">
+        <if test="title != null">
+            title = #{title},
+        </if>
+    </sql>
+
+    <select id="selectBlogByforeach" resultType="blog" parameterType="map">
+        select * from blog
+        <where>
+            <foreach collection="ids" item="id" open="and (" close=")" separator="or">
+                id = #{id}
+            </foreach>
+        </where>
+        ;
+    </select>
 </mapper>

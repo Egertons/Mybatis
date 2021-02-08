@@ -6,10 +6,7 @@ import com.zhanglin.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MyTest {
     @Test
@@ -84,6 +81,36 @@ public class MyTest {
         Map map = new HashMap();
         map.put("demo",1);
         List<Blog> blogs = mapper.quaryBlogPowerByChoose(map);
+        for (Blog blog : blogs) {
+            System.out.println(blog.toString());
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void updateBlog(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        Map map = new HashMap();
+        map.put("title","aaa");
+        map.put("id","1");
+        int i = mapper.updateBlog(map);
+        if (i>0){
+            System.out.println("更新成功");
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void selectBlogByforeach(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        ids.add(1);
+        ids.add(2);
+        Map map = new HashMap();
+        map.put("ids",ids);
+        List<Blog> blogs = mapper.selectBlogByforeach(map);
         for (Blog blog : blogs) {
             System.out.println(blog.toString());
         }

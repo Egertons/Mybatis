@@ -14,8 +14,8 @@
     <typeAliases>
         <package name="com.zhanglin.pojo"/>
     </typeAliases>
-    <environments default="development">
-        <environment id="development">
+    <environments default="demo">
+        <environment id="demo">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="${driver}"/>
